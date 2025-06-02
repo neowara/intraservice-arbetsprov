@@ -1,3 +1,8 @@
+const { colors } = require('./src/theme/colors');
+const { fonts } = require('./src/theme/fonts');
+const { borderRadius } = require('./src/theme/borderRadius');
+const { shadows } = require('./src/theme/shadows');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,20 +11,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        intraservice: {
-          yellow: '#FFD600',
-          black: '#222222',
-          gray: '#E5E5E5',
-        },
+        ...colors,
+        intraservice: colors,
       },
       fontFamily: {
-        sans: ['Arial', 'Helvetica', 'sans-serif'],
+        ...fonts,
       },
       borderRadius: {
-        intraservice: '0.5rem',
+        ...borderRadius,
       },
       boxShadow: {
-        intraservice: '0 2px 8px 0 rgba(0,0,0,0.08)',
+        ...shadows,
       },
     },
   },
