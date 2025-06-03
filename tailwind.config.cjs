@@ -1,29 +1,25 @@
-const { colors } = require('./src/theme/colors');
-const { fonts } = require('./src/theme/fonts');
-const { borderRadius } = require('./src/theme/borderRadius');
-const { shadows } = require('./src/theme/shadows');
+const { colors } = require("./src/theme/colors.js");
+const { fonts } = require("./src/theme/fonts.js");
+const { borderRadius } = require("./src/theme/borderRadius.js");
+const { shadows } = require("./src/theme/shadows.js");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/client/**/*.{js,ts,jsx,tsx,html}",
-  ],
+  content: ["./src/client/**/*.{js,ts,jsx,tsx,html}"],
   theme: {
-    extend: {
-      colors: {
-        ...colors,
-        intraservice: colors,
-      },
-      fontFamily: {
-        ...fonts,
-      },
-      borderRadius: {
-        ...borderRadius,
-      },
-      boxShadow: {
-        ...shadows,
-      },
+    colors: {
+      ...colors,
     },
+    fontFamily: {
+      ...fonts,
+    },
+    borderRadius: {
+      ...borderRadius,
+    },
+    boxShadow: {
+      ...shadows,
+    },
+    extend: {},
   },
   plugins: [],
-}
+};

@@ -1,0 +1,24 @@
+/*
+  index.css: Global styles and Tailwind import for the application.
+  Customizes background and font using CSS variables and @theme block.
+*/
+
+@import "tailwindcss";
+
+body {
+  background-color: var(--color-gray);
+  font-family: var(--font-sans);
+}
+
+@theme {
+  --color-primary: #ffd600;
+  --color-black: #222222;
+  --color-white: #ffffff;
+  --color-gray: #e5e5e5;
+  --color-action-gray: #959595;
+  --color-info: #ffd600;
+  --color-action-blue: #005799;
+  --color-action-blue-dark: #004172;
+  --color-yellow: #ffd600;
+  --color-red: #fde3d6;
+}
