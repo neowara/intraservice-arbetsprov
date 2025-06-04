@@ -1,14 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import Section from './Section';
+import { render, screen } from "@testing-library/react";
+import Section from "./Section";
 
-describe('Section', () => {
-  it('renders title and children', () => {
+describe("Section", () => {
+  it("renders title and children", () => {
     render(
       <Section title="My Section">
         <div>Section content</div>
       </Section>
     );
-    expect(screen.getByText('My Section')).toBeInTheDocument();
-    expect(screen.getByText('Section content')).toBeInTheDocument();
+    expect(screen.getByText("My Section")).toBeInTheDocument();
+    expect(screen.getByText("Section content")).toBeInTheDocument();
   });
 });

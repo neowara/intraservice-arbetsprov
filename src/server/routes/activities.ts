@@ -1,16 +1,19 @@
-// Activities API route: returns available activities from JSON file
+// Express router for activities endpoint
 import { Router } from "express";
 import fs from "fs";
 import path from "path";
 
 const activitiesRouter = Router();
 
+// GET /api/activities
+// Returns the list of available activities from a static JSON file
 activitiesRouter.get("/", (req, res) => {
-  // Use process.cwd() to get the project root, then resolve to data/activities.json
+  // Resolve the path to the activities data file
   const activitiesPath = path.join(
     process.cwd(),
     "src/server/data/activities.json"
   );
+  // Read activities from file and return as JSON
   fs.readFile(activitiesPath, "utf-8", (err, data) => {
     if (err) {
       return res.status(500).json({ error: "Kunde inte läsa aktiviteter." });
@@ -20,4 +23,5 @@ activitiesRouter.get("/", (req, res) => {
   });
 });
 
+// Export the router for use in the main server
 export default activitiesRouter;

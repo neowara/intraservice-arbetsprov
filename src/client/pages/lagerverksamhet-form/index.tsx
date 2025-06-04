@@ -5,12 +5,14 @@ import "../../styles/index.css";
 import Form from "../../components/Form/Form";
 
 function App() {
+  // State for available activities, loading, error, success, and validation
   const [options, setOptions] = React.useState<string[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [success, setSuccess] = React.useState<string | null>(null);
   const [validationErrors, setValidationErrors] = React.useState<string[]>([]);
 
+  // Fetch available activities on mount
   React.useEffect(() => {
     fetch("/api/activities")
       .then((res) => res.json())
@@ -19,6 +21,7 @@ function App() {
   }, []);
 
   // Handles the actual form submission logic
+  // Sends data to the backend and manages UI state based on response
   const handleFormSubmit = async ({
     name,
     email,
@@ -47,6 +50,7 @@ function App() {
       });
       const data = await res.json();
       if (!res.ok) {
+        // Show validation errors or generic error
         if (Array.isArray(data.errors)) {
           setValidationErrors(data.errors);
           return { errors: data.errors };
@@ -55,12 +59,12 @@ function App() {
           return { error: data.error || "Ett fel uppstod vid inskickning." };
         }
       } else {
+        // Show success message and reset form
         const msg = [
           "Tack för din anmälan",
           "Bekräfta prenumerationen via länken i det mejl som du har fått.",
         ].join("\n");
         setSuccess(msg);
-        // Reset form fields by forcing a re-mount of the Form component
         return { success: msg, reset: true };
       }
     } catch (err) {
@@ -71,6 +75,7 @@ function App() {
     }
   };
 
+  // Render the generic Form component with all state and handlers
   return (
     <Form
       options={options}
@@ -83,6 +88,7 @@ function App() {
   );
 }
 
+// Mount the app to the root element
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

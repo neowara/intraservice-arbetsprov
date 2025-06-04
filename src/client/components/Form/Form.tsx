@@ -17,6 +17,7 @@ const Form: React.FC<FormProps> = ({
   success = null,
   validationErrors = [],
 }) => {
+  // State for form fields and dropdown
   const [selected, setSelected] = React.useState<string[]>([]);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
   const [name, setName] = React.useState("");
@@ -58,7 +59,7 @@ const Form: React.FC<FormProps> = ({
     }
   };
 
-  // Remove an option from selection
+  // Remove an option from selection (via tag X button)
   const removeOption = (option: string) => {
     setSelected(selected.filter((a) => a !== option));
   };
@@ -133,6 +134,7 @@ const Form: React.FC<FormProps> = ({
         </div>
       </Section>
       <Section title="Aktiviteter" className="mb-8">
+        {/* Render selected activities as tags */}
         <div className="flex flex-wrap gap-2 mb-2 mt-2">
           {selected.map((option) => (
             <span
@@ -154,6 +156,7 @@ const Form: React.FC<FormProps> = ({
         <p className="text-sm text-black mt-2 pb-2">
           Välj 3 aktiviteter du är intresserad av.
         </p>
+        {/* Dropdown for selecting activities */}
         <div className="mb-2">
           <Dropdown
             open={dropdownOpen}
@@ -175,6 +178,7 @@ const Form: React.FC<FormProps> = ({
           </Dropdown>
         </div>
       </Section>
+      {/* Submit button */}
       <Button
         type="submit"
         loading={loading}
